@@ -1,0 +1,21 @@
+bool isValid(char * s){
+    if(strlen(s)%2!=0) return false;
+    char* p = (char*)calloc(strlen(s),sizeof(char));
+    char* top = p;
+    while(*s){
+        if(*s=='(')    *top++ = ')';
+        else if(*s=='[')  *top++ = ']';
+        else if(*s=='{')  *top++ = '}';
+        else{
+            if(top==p) return false;
+            top--;
+            if(*top!=*s){
+                return false;
+            }
+        } 
+        s++;
+    }
+    if(top==p)
+        return true;
+    else return false;
+}
