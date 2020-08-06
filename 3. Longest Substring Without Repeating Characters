@@ -1,0 +1,25 @@
+int lengthOfLongestSubstring(char * s){
+    int a[128] = {0};
+    int mc = 0;
+    int c = 0;
+    char *p = s;
+    while(*s && *p){
+        a[*p-' '] += 1;
+        if(a[*p-' ']>1){
+            c++;
+            while(a[*p - ' ']>1){
+                a[*s - ' '] -= 1;
+                c--;
+                s++;
+            }
+            p++;
+
+        }else{
+            c++;
+            if(c>mc) mc = c;
+            p++;
+        }
+    }
+
+    return mc;
+}
