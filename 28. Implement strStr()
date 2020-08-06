@@ -1,0 +1,22 @@
+int strStr(char * haystack, char * needle){
+    if(*needle == '\0') return 0;
+    int idx = 0;
+    char* t1 = haystack;
+    char* t2 = needle;
+    while(*haystack!='\0'){
+        if(*haystack==*needle){
+            int judge = 1;
+            t1 = haystack;
+            t2 = needle;
+            while(*t2!='\0'&& *t1!='\0'){
+                if(*t1!=*t2) judge = 0;
+                t1++;
+                t2++;
+            }
+            if(judge && *t2=='\0') return idx;
+        }
+        haystack++;
+        idx++;
+    }
+    return -1;
+}
