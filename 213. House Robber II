@@ -1,0 +1,25 @@
+int rob(int* nums, int numsSize){
+    if(!numsSize) return 0;
+    if(numsSize==1) return nums[0];
+    if(numsSize==2) return nums[0]>nums[1]?nums[0]:nums[1];
+    int sum1 = 0;
+    int sum2 = 0;
+    int a = 0;
+    int b = 0;
+    for(int i=0;i<numsSize-1;i++){
+        int dp = a+nums[i]>b?a+nums[i]:b;
+        a = b;
+        b = dp;
+    }
+    sum1 = b;
+    a = 0;
+    b = 0;
+    for(int i=1;i<numsSize;i++){
+        int dp = a+nums[i]>b?a+nums[i]:b;
+        a = b;
+        b = dp;
+    }
+    sum2 = b;
+
+    return sum1>sum2?sum1:sum2;
+}
