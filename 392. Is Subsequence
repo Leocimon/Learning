@@ -1,0 +1,12 @@
+bool isSubsequence(char * s, char * t){
+    while(*s && *t){
+        if(*s == *t){
+            s++;
+            t++;
+        }
+        else t++;
+    }
+    if(*s) return false;
+    else return true; 
+
+}
