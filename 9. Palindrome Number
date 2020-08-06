@@ -1,0 +1,13 @@
+bool isPalindrome(int x){
+    bool judge = false;
+    if(x<0) return judge;
+    long temp = 0;
+    long p = x;
+    while(p>0){
+        temp = temp*10 + p%10;
+        p /= 10;
+    }
+    if(temp == x) judge = true;
+
+    return judge;
+}
