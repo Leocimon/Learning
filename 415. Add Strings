@@ -1,0 +1,30 @@
+char * addStrings(char * num1, char * num2){
+    int len = strlen(num1)>strlen(num2)? strlen(num1):strlen(num2);
+    char *res = (char*)malloc(sizeof(char)*(len+2));
+    res[len+1] = '\0';
+    int i=strlen(num1)-1, j=strlen(num2)-1;
+    int carry=0,k=len;
+    while(i>=0 && j>=0){
+        res[k--] = (carry + num1[i]-'0'+num2[j]-'0') % 10+'0';
+        carry = (carry + num1[i]-'0'+num2[j]-'0') / 10;
+        i--;
+        j--;
+    }
+
+    while(i>=0){
+        res[k--] = (carry + num1[i]-'0')%10+'0';
+        carry = (carry + num1[i]-'0')/10;
+        i--;
+    }
+    while(j>=0){
+        res[k--] = (carry + num2[j]-'0')%10+'0';
+        carry = (carry + num2[j]-'0')/10;
+        j--;
+    }
+
+    if(carry){
+            res[k] = '1';
+            return res;
+    }else return res+1;
+
+}
