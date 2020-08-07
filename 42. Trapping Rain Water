@@ -1,0 +1,31 @@
+int trap(int* height, int heightSize){
+    int hmax = 0;
+    int hidx = 0;
+    int temph = 0;
+    int sum1 = 0;
+    int sum2 = 0;
+    for(int i=0;i<heightSize;i++){
+        if(height[i]>hmax){
+            hmax = height[i];
+            hidx = i;
+        }
+    }
+
+    if(!hmax) return 0;
+    temph = height[0];
+    for(int i=0;i<hidx;i++){
+        if(height[i]>temph){
+            temph = height[i];
+            continue;
+        }else sum1 += temph - height[i];
+    }
+    temph = height[heightSize-1];
+    for(int i=heightSize-1;i>hidx;i--){
+        if(height[i]>temph){
+            temph = height[i];
+            continue;
+        }else sum2 += temph - height[i];
+    }
+
+    return sum1+sum2;
+}
